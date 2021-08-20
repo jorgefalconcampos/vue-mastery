@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="nav-bar"></div>
+
+
+    <div id="app">
+        <div class="product">
+            <div class="product-image">
+                <a :href="url">
+                    <img :src=image :alt="product + ' | ' + description">
+                </a>
+            </div>
+
+
+            <div class="product-info">
+                <h1>{{product}}</h1>
+                <h2>{{description}}</h2>
+                <hr>
+                <h3 v-show="onSale"><b>On sale!</b></h3>
+
+                <p v-if="inventory > 10">In stock</p>
+                <p v-else-if="inventory <=10 && inventory > 0">Almost sold out</p>
+                <p v-else>Out of stock</p>
+
+                <ul>
+                    <li v-for="detail in details">
+                        {{detail}}
+                    </li>
+                </ul>
+
+                <div v-for="variant in variants":key="variant.variantId" >
+                    <p @mouseover="updateProductPreview(variant.variantImage)" >{{variant.variantColor}}</p>
+                </div>
+
+                <div v-for="size in sizes" style="display: inline;">
+                    <b>{{size}} cm | </b>
+                </div>
+                <br>
+                <br>
+                <br>
+
+
+                <button v-on:click="addToCart" style="cursor: pointer;">Add to cart</button>
+
+                <div class="cart">
+                    <p> Cart ({{cart}})</p>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+    
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+<script src="main.js"></script>
+
+</body>
+</html>
