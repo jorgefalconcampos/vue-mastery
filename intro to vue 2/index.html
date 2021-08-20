@@ -30,6 +30,31 @@
                 <p v-if="inventory > 10">In stock</p>
                 <p v-else-if="inventory <=10 && inventory > 0">Almost sold out</p>
                 <p v-else>Out of stock</p>
+
+                <ul>
+                    <li v-for="detail in details">
+                        {{detail}}
+                    </li>
+                </ul>
+
+                <div v-for="variant in variants":key="variant.variantId" >
+                    <p @mouseover="updateProductPreview(variant.variantImage)" >{{variant.variantColor}}</p>
+                </div>
+
+                <div v-for="size in sizes" style="display: inline;">
+                    <b>{{size}} cm | </b>
+                </div>
+                <br>
+                <br>
+                <br>
+
+
+                <button v-on:click="addToCart" style="cursor: pointer;">Add to cart</button>
+
+                <div class="cart">
+                    <p> Cart ({{cart}})</p>
+                </div>
+
             </div>
 
         </div>
