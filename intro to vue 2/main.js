@@ -65,9 +65,7 @@ Vue.component('product', {
 
         <p> Shipping: {{shipping}} </p>
 
-        <div class="cart">
-            <p> Cart ({{cart}})</p>
-        </div>
+      
     </div>
 
 </div>
@@ -99,20 +97,19 @@ Vue.component('product', {
                     variantId: 2235,
                     variantColor: "black",
                     variantImage: './assets/nike_air_zoom_black.png',
-                    variantStockQuantity: 0,
+                    variantStockQuantity: 2,
                     onSaleVariant: false
                 }
             ],
             sizes: [23, 24, 25, 26, 27, 28],
-            cart: 0
         } 
     },
     methods: {
         addToCart() {
-            this.cart += 1;
+            this.$emit('add-to-cart', this.variants[this.selectedVariant].variantId);
         },
         removeFromCart() {
-            this.cart -= 1;
+            this.$emit('remove-from-cart', this.variants[this.selectedVariant].variantId);
         },
         updateProductPreview(index) {
             this.selectedVariant = index
@@ -147,5 +144,18 @@ var app = new Vue({
     el: '#app',
     data: {
         premium: true,
+        cart: []
+    },
+    methods: {
+        updateCart(id) {
+            this.cart.push(id);
+        },
+        removeItem(id) {
+            for (var i=this.cart.length - 1; i>=0; i--){
+                if (this.cart[i] === id) {
+                    this.cart.splice(i, 1);
+                }
+            }
+        }
     }
 });
