@@ -22,10 +22,10 @@
 
 
             <div class="product-info">
-                <h1>{{product}}</h1>
+                <h1>{{title}}</h1>
                 <h2>{{description}}</h2>
                 <hr>
-                <h3 v-show="onSale"><b>On sale!</b></h3>
+                <h3>{{isOnSale}}</h3>
 
 
                 <p v-if="inventory > 10 && inStock">In stock</p>
@@ -39,11 +39,11 @@
                     </li>
                 </ul>
 
-                <div v-for="variant in variants"
+                <div v-for="(variant, index) in variants"
                     :key="variant.variantId"
                     class="color-box"
                     :style="{ backgroundColor: variant.variantColor }"
-                    @mouseover="updateProductPreview(variant.variantImage)">
+                    @mouseover="updateProductPreview(index)">
                 </div>
 
                 <div v-for="size in sizes" style="display: inline;">
