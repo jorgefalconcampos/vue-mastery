@@ -13,59 +13,7 @@
 
 
     <div id="app">
-        <div class="product">
-            <div class="product-image">
-                <a :href="url">
-                    <img :src=image :alt="product + ' | ' + description">
-                </a>
-            </div>
-
-
-            <div class="product-info">
-                <h1>{{title}}</h1>
-                <h2>{{description}}</h2>
-                <hr>
-                <h3>{{isOnSale}}</h3>
-
-
-                <p v-if="inventory > 10 && inStock">In stock</p>
-                <p v-else-if="inventory <=10 && inventory > 0">Almost sold out</p>
-                <p v-else style="text-decoration: line-through">Out of stock</p>
-                    
-
-                <ul>
-                    <li v-for="detail in details">
-                        {{detail}}
-                    </li>
-                </ul>
-
-                <div v-for="(variant, index) in variants"
-                    :key="variant.variantId"
-                    class="color-box"
-                    :style="{ backgroundColor: variant.variantColor }"
-                    @mouseover="updateProductPreview(index)">
-                </div>
-
-                <div v-for="size in sizes" style="display: inline;">
-                    <b>{{size}} cm | </b>
-                </div>
-                <br>
-                <br>
-                <br>
-
-                <button v-on:click="addToCart" 
-                    :disabled="!inStock" 
-                    :class="{ disabledButton: !inStock }"
-                    style="cursor: pointer;">Add to cart</button>
-                <br>
-                <button v-on:click="removeFromCart" style="cursor: pointer;">Remove from cart</button>
-
-                <div class="cart">
-                    <p> Cart ({{cart}})</p>
-                </div>
-            </div>
-
-        </div>
+        <product :premium="premium"></product>      
     </div>
     
 <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
