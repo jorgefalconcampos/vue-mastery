@@ -13,6 +13,12 @@
 
     <div id="app">
         <div class="nav-bar"></div>
+
+
+        <div class="cart">
+            Cart ({{cart}})
+        </div>
+
         <div class="product-display">
             <div class="product-container">
                 <div class="product-image">
@@ -35,16 +41,18 @@
                         <li v-for="detail in details">- {{detail}}</li>
                     </ul>
 
-                    <div v-for="variant in variants" :key="variant.id">
+                    <div v-for="variant in variants" :key="variant.id" @mouseover="updateImage(variant.image)">
                         {{variant.color}}
                     </div>
 
                     <div v-for="size in sizes" style="display: inline;">
-                        <button>
-                            {{size}} cm 
-                        </button> 
-                        - 
+                        <button>{{size}} cm </button> - 
                     </div>
+
+                    <br>
+
+                    <button class="button" v-on:click="addToCart">Add to cart</button>
+                    <button class="button" v-on:click="removeFromCart">Remove from cart</button>
 
 
                    
