@@ -13,71 +13,17 @@
 
     <div id="app">
         <div class="nav-bar"></div>
+        <div class="cart">Cart ({{cart}})</div>
+        <product-display :premium="premium">
 
-
-        <div class="cart">
-            Cart ({{cart}})
-        </div>
-
-        <div class="product-display">
-            <div class="product-container">
-                <div class="product-image">
-                    <a :href="url" target="_blank">
-                        <img :src="image" :alt="product">
-                    </a>
-                </div>
-                
-
-                <div class="product-info">
-                    <h1>{{title}}</h1>
-                    
-                    <p v-if="inStock">In Stock</p>
-                    <p v-else>Out of stock</p>
-
-                    <p v-show="onSale"><b>On sale!</b></p>
-
-                    <ul>
-                        <li v-for="detail in details">- {{detail}}</li>
-                    </ul>
-
-                    <div 
-                        v-for="(variant, index) in variants" 
-                        :key="variant.id" 
-                        @mouseover="updateVariant(index)"
-                        class="color-circle"
-                        :style="{ 'background-color': variant.color }"
-                    >
-                    </div>
-
-                    <div v-for="size in sizes" style="display: inline;">
-                        <button>{{size}} cm </button> - 
-                    </div>
-
-                    <br>
-
-                    <button 
-                        class="button" 
-                        :class="{ disabledButton: !inStock }"
-                        :disabled="!inStock"
-                        @click="addToCart">
-                        Add to cart
-                    </button>
-                    <button class="button" v-on:click="removeFromCart">Remove from cart</button>
-
-
-                   
-                </div>
-            </div>
-
-        </div>
-
-
+        </product-display>
     </div>
 
 
 
 <!-- import app -->
 <script src="main.js"></script>
+<script src="./components/ProductDisplay.js"></script>
 
 <!-- mount app -->
 <script>
