@@ -13,21 +13,18 @@
 
     <div id="app">
         <div class="nav-bar"></div>
-        <div class="product-display">
+        <div class="cart">Cart ({{cart}})</div>
+        <product-display :premium="premium">
 
-            <div class="product-info">
-                <h1>{{product}}</h1>
-            </div>
-
-        </div>
-
-
+        </product-display>
     </div>
 
 
 
 <!-- import app -->
 <script src="main.js"></script>
+<script src="./components/ProductDisplay.js"></script>
+<script src="./components/ProductDetails.js"></script>
 
 <!-- mount app -->
 <script>
