@@ -21,10 +21,10 @@ app.component('product-display', {
                 <p v-if="inStock">In Stock</p>
                 <p v-else>Out of stock</p>
                 <p v-show="onSale"><b>On sale!</b></p>
-                <ul>
-                    <li v-for="detail in details">- {{detail}}</li>
-                </ul>
+                
+                <product-details :details="details"></product-details>
 
+                
                 <div 
                     v-for="(variant, index) in variants" 
                     :key="variant.id" 
@@ -65,11 +65,7 @@ app.component('product-display', {
             // inStock: true,
             // inventory: 0,
             onSale: false,
-            details : [
-                "Placa de fibra de carbono",
-                "Solo 210 gramos de peso",
-                "Desplazamiento 4mm" 
-            ],
+         
             variants: [
                 {
                     id: 2334, 
