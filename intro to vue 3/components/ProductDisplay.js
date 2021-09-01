@@ -86,10 +86,8 @@ app.component('product-display', {
         }
     },
     methods: {
-        addToCart(){
-            this.cart += 1;
-        },
-        removeFromCart(){ if (this.cart >= 1){ this.cart -= 1; } },
+        addToCart(){ /* this.cart += 1; */ this.$emit('add-to-cart'); },
+        removeFromCart(){ this.$emit('remove-from-cart') },
         updateVariant(index){ this.selectedVariant = index; }
 
     },
