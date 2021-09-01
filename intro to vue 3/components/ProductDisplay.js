@@ -52,8 +52,8 @@ app.component('product-display', {
 
                 <button class="button" v-on:click="removeFromCart">Remove from cart</button>
 
-
                 <review-list v-if="reviews.length" :reviews="reviews"></review-list>
+
                 <review-form @review-submitted="addReview"></review-form>
             
             </div>
@@ -88,40 +88,33 @@ app.component('product-display', {
             sizes: [
                 25, 26, 27, 28, 29
             ],
-
-            reviews: [
-
-            ]
+            reviews: []
         }
     },
     methods: {
         addToCart(){ /* this.cart += 1; */ 
             this.$emit('add-to-cart', this.variants[this.selectedVariant].id); 
         },
+
         removeFromCart(){ 
             this.$emit('remove-from-cart', this.variants[this.selectedVariant].id) 
         },
-        updateVariant(index){ this.selectedVariant = index; },
+
+        updateVariant(index){ 
+            this.selectedVariant = index; 
+        },
 
         addReview(review) {
             this.reviews.push(review);
         }
-
     },
     computed: {
         title() { return this.brand + this.product; },
         image() { return this.variants[this.selectedVariant].image; },
         inStock() { return this.variants[this.selectedVariant].quantity; },
         shipping(){
-            
-            if (this.premium){
-                return 'Free';
-            }
-            else{
-                return 2.99
-            }
+            if (this.premium){ return 'Free'; }
+            else{ return 2.99 }
         }
     }
-
-
 });

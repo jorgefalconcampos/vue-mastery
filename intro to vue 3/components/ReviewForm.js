@@ -31,8 +31,6 @@ app.component('review-form', {
     },
     methods: {
         onSubmit() {
-
-
             if(this.name === "" || this.review === "" || this.rating === null){
                 alert("This is empty")
             }
@@ -42,16 +40,12 @@ app.component('review-form', {
                 review: this.review,
                 rating: this.rating
             }
+
             this.$emit('review-submitted', productReview);
 
             this.name = ""
             this.review = ""
             this.rating = null
-
-
         }
     }
-
-
-
 });
