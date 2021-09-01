@@ -22,6 +22,4 @@ app.component('product-details', {
             ],
         }
     }
-
-   
 });
