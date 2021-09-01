@@ -49,7 +49,12 @@ app.component('product-display', {
                     @click="addToCart">
                     Add to cart
                 </button>
+
                 <button class="button" v-on:click="removeFromCart">Remove from cart</button>
+
+
+                <review-list v-if="reviews.length" :reviews="reviews"></review-list>
+                <review-form @review-submitted="addReview"></review-form>
             
             </div>
         </div>
@@ -82,6 +87,10 @@ app.component('product-display', {
             ],
             sizes: [
                 25, 26, 27, 28, 29
+            ],
+
+            reviews: [
+
             ]
         }
     },
@@ -92,7 +101,11 @@ app.component('product-display', {
         removeFromCart(){ 
             this.$emit('remove-from-cart', this.variants[this.selectedVariant].id) 
         },
-        updateVariant(index){ this.selectedVariant = index; }
+        updateVariant(index){ this.selectedVariant = index; },
+
+        addReview(review) {
+            this.reviews.push(review);
+        }
 
     },
     computed: {
