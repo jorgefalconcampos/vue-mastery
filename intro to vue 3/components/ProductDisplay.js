@@ -77,7 +77,7 @@ app.component('product-display', {
                     id: 2335, 
                     color: 'white',
                     image: './assets/nike_air_zoom_white.PNG',
-                    quantity: 0
+                    quantity: 4
                 },
             ],
             sizes: [
@@ -86,8 +86,12 @@ app.component('product-display', {
         }
     },
     methods: {
-        addToCart(){ /* this.cart += 1; */ this.$emit('add-to-cart'); },
-        removeFromCart(){ this.$emit('remove-from-cart') },
+        addToCart(){ /* this.cart += 1; */ 
+            this.$emit('add-to-cart', this.variants[this.selectedVariant].id); 
+        },
+        removeFromCart(){ 
+            this.$emit('remove-from-cart', this.variants[this.selectedVariant].id) 
+        },
         updateVariant(index){ this.selectedVariant = index; }
 
     },
