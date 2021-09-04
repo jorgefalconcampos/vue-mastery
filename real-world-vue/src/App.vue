@@ -3,6 +3,7 @@
     <router-link to="/">Events</router-link> |
     <router-link to="/about">About</router-link>
   </div>
+  <!-- <h1>Events for good</h1> -->
   <router-view />
 </template>
 
@@ -26,5 +27,9 @@
 
 #nav a.router-link-exact-active {
   color: #42b983;
+}
+
+h4 {
+  font-size: 23px;
 }
 </style>
