@@ -4,7 +4,6 @@
     <router-link to="/about">About</router-link>
   </div>
   <!-- <h1>Events for good</h1> -->
-  
   <router-view />
 </template>
 
