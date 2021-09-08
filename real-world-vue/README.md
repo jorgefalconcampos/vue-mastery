@@ -3,7 +3,7 @@
 You can find this project here:
 [https://github.com/jorgefalconcampos/rw-vue](https://github.com/jorgefalconcampos/rw-vue) with its own URL and deployed with [serve](serve.com).
 
-
+Shorthand URL: [https://rw-vue.onrender.com/](https://rw-vue.onrender.com/)
 
 ---
 
