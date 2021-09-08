@@ -1,36 +1,33 @@
 <template>
+  <h1>Events for Good</h1>
   <div class="events">
-    <h1>Events for good</h1>
     <EventCard v-for="event in events" :key="event.id" :event="event" />
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import EventCard from "@/components/EventCard.vue";
-import EventService from "@/services/EventServices.js";
-
+import EventCard from '@/components/EventCard.vue'
+import EventService from '@/services/EventService.js'
 export default {
-  name: "EventList",
+  name: 'EventList',
   components: {
-    EventCard,
+    EventCard
   },
   data() {
     return {
-      events: null,
-    };
+      events: null
+    }
   },
   created() {
     EventService.getEvents()
-    .then((response) => {
-        // console.log("events", response.data);
-        this.events = response.data; 
+      .then(response => {
+        this.events = response.data
       })
-      .catch((err) => {
-        console.log(err)
-      });
-  },
-};
+      .catch(error => {
+        console.log(error)
+      })
+  }
+}
 </script>
 
 <style scoped>
